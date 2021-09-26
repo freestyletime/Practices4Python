@@ -1,0 +1,4 @@
+1. Church-Turing Thesis
+
+Simply put (in terms of our URM model), the Church-Turing Thesis boils down to this:
+Any algorithm a human can possibly invent can be translated into a URM program that computes that algorithm.

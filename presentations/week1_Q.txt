@@ -1,0 +1,63 @@
+1. P=NP: 
+
+the problem of decidability is closely linked to the P=NP problem. 
+The P=NP problem, asks whether any problem whose answer can be verified easily, 
+can be solved easily. So far there has been no proof 
+that P=NP and there may be some problems that we can verify easily, 
+but will remain extremely difficult to calculate.  
+
+2. The Halting problem is another example of an undecidable problem. 
+
+It asks whether an algorithm A can be used to determine 
+if a program P will halt on a Turing Machine for a given input X, 
+which so far has been an impossible problem to solve.
+
+
+3. What is the relation between computer network and decidability theory. 
+
+we use decidability to focus on the decision whether the given two different computer
+networks are similar or not, whether they are compatible enough
+
+4. Is decidabilty theory that necessary in computer network
+
+Decidability theory is a branch of mathematics. Suppose there is a set, and there
+is an element. There is also an algorithm. The algorithm will simply check if the
+element belongs to the set or not. If the algorithm stops (after a limited time) and
+reaches a decision, whether the element is in the set or not, it is called decidable.
+For example, one of the vital problems for computer security is to make a decision
+whether to accept a message or to reject it because this message contains a virus.
+So it really matters especially for the security purpose
+
+5. What type of games belongs to the decision problem or not, plz give some examples.
+
+Chess is decidable. The same holds for all other finite two-player games with perfect information.
+Mate in n in infinite chess (with limitations on rules and gamepieces) is decidable.
+However, there are positions (with finitely many pieces) that are forced wins, but not mate in n for any finite n.
+Some team games with imperfect information on a finite board (but with unlimited time) are undecidable.
+Conway's Game of Life is undecidable.
+
+6. It's not sufficient that we can't find an algorithm by thinking really hard.
+we need to prove that such an algorithm cannot exist, in order to show a problem to be undecidable.
+
+We'll talk about a mathematical model of computation called a Universal Register Machine.
+The URM is an abstract model of computation.
+
+A URM has three parts:
+    A set of registers, each of which has a unique natural number address. Each register can hold a single natural number value.
+    A program store, which is an array of instructions.
+    A program counter, which is a natural number indicating what instruction is to be executed next.
+
+there is no way to prove that we can't come up with an algorithm that could not be computed by a URM.
+however, it is widely supposed to be true. This belief, proposed by Alonzo Church and Alan Turing, 
+is usually called the Church-Turing Thesis.
+
+Simply put (in terms of our URM model), the Church-Turing Thesis boils down to this:
+Any algorithm a human can possibly invent can be translated into a URM program that computes that algorithm.
+
+No one has ever found an algorithm that could not be translated into a URM, 
+and in fact, no one has found another model of computation that has more power than a URM
+
+7. How to construct a model?
+
+The point of constructing a model is to capture the essential attributes of an idea, 
+without getting bogged down in a lot of details.
