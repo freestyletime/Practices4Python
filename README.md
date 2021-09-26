@@ -1,4 +1,4 @@
-# practices
+# Practices4Python
 Personal Python3 routine practices.
 
 
@@ -9,8 +9,8 @@ Personal Python3 routine practices.
 #### 克隆项目(clone project)
 
 ```sh
-$ git clone https://github.com/freestyletime/practices
-$ cd practices/
+$ git clone https://github.com/freestyletime/Practices4Python
+$ cd Practices4Python/
 ```
 
 
