@@ -56,6 +56,7 @@ Any algorithm a human can possibly invent can be translated into a URM program t
 
 No one has ever found an algorithm that could not be translated into a URM, 
 and in fact, no one has found another model of computation that has more power than a URM
+One example of an undecidable problem is the Halting Problem
 
 7. How to construct a model?
 

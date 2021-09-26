@@ -1,6 +1,6 @@
 # Practices4Python
 Personal Python3 routine practices.
-Personal Computation & Complexity course materials
+Personal Computation & Complexity course materials.
 
 
 ## 运行项目(running project)
