@@ -210,6 +210,15 @@ def isPP(n):
                     break
         else:
             return None
+
+def palindromes(text):
+    if text == None or len(text) == 0:
+        return False
+    if len(text) == 2:
+        return True if text[0] == text[1] else False
+    
+    max = len(text) // 2
+    return True if text[:max] == text[max + 1:][::-1] else False
     
 
 if __name__ == '__main__':
@@ -234,8 +243,8 @@ if __name__ == '__main__':
     print(same_structure_as2([1,'[',']'],['[',']',1]))
     print(format_duration(3662))
     print(isPP(8))
-    array = [[1,2,3,4],
-         [4,5,6,8],
-         [7,8,9,3],
-         [6,2,0,3]]
-    #print(snail(array))
+
+    print(palindromes("aounbbbnuoa"))
+    print(palindromes("dad"))
+    print(palindromes("Dad"))
+    
