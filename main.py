@@ -219,6 +219,23 @@ def palindromes(text):
     
     max = len(text) // 2
     return True if text[:max] == text[max + 1:][::-1] else False
+
+def twoSum(nums, target):
+    length = len(nums)
+    max = length * (length - 1) // 2
+    x = 0
+    y = 1
+    for i in range(0, max):
+        if nums[x] + nums[y] == target:
+            return [x, y]
+        else:
+            if y < length - 1:
+                y += 1
+            else:
+                x += 1
+                y = x + 1
+
+    return [-1, -1]
     
 
 if __name__ == '__main__':
@@ -247,4 +264,12 @@ if __name__ == '__main__':
     print(palindromes("aounbbbnuoa"))
     print(palindromes("dad"))
     print(palindromes("Dad"))
+
+    print(twoSum([2, 7, 11, 15], 9))
+    print(twoSum([2, 7, 11, 15], 17))
+    print(twoSum([2, 7, 11, 15], 22))
+    print(twoSum([2, 7, 11, 15], 26))
+    print(twoSum([2, 7, 11, 15], 100))
+
+    
     
