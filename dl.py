@@ -32,5 +32,5 @@ for it in range(100):
     delta = backproPagation(y, output)
     weights = weights + dot(X.T, delta)
 
-print(forwardPropagation([1,1,1], weights));
+print(forwardPropagation([[1,1,1]], weights));
 # ================ perceptron simulation ================

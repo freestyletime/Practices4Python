@@ -4,7 +4,7 @@
 # Detail reference: https://zh.wikipedia.org/wiki/%E4%B8%BB%E5%AE%9A%E7%90%86
 
 
-# variable switch
+# variables value switch
 def swap(a, b):
     a = a ^ b
     b = a ^ b
