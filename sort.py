@@ -60,5 +60,4 @@ def merge(left, right):
         result.append(right.pop(0))
     return result
 
-
 print(mergeSort([9,5,3,3,6,1,7,22,53,4,7,9,8,2]))

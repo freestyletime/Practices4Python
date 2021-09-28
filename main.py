@@ -270,6 +270,3 @@ if __name__ == '__main__':
     print(twoSum([2, 7, 11, 15], 22))
     print(twoSum([2, 7, 11, 15], 26))
     print(twoSum([2, 7, 11, 15], 100))
-
-    
-    
