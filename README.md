@@ -1,6 +1,7 @@
 # Practices4Python
-Personal Python3 routine practices.
-Personal Computation & Complexity course materials.
+Personal Python3 routine and the other languages practices.
+Computation & Complexity, Machine Learning & Neural Network, 
+Mobile Development, Data Structure & Algorithm.
 
 
 ## 运行项目(running project)
