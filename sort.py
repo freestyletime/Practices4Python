@@ -3,6 +3,7 @@
 # T(N) = a*T(N/b) + O(N^d)
 # Detail reference: https://zh.wikipedia.org/wiki/%E4%B8%BB%E5%AE%9A%E7%90%86
 
+import math
 
 # variables value switch
 def swap(a, b):
@@ -39,7 +40,6 @@ def insertSort(list):
 
 
 def mergeSort(list):
-    import math
     if(len(list) < 2):
         return list
     middle = math.floor(len(list) / 2)
@@ -60,4 +60,19 @@ def merge(left, right):
         result.append(right.pop(0))
     return result
 
-print(mergeSort([9,5,3,3,6,1,7,22,53,4,7,9,8,2]))
+def shellSort(arr):
+    gap = 1
+    while(gap < len(arr)/3):
+        gap = gap*3+1
+    while gap > 0:
+        for i in range(gap, len(arr)):
+            temp = arr[i]
+            j = i - gap
+            while j >= 0 and arr[j] > temp:
+                arr[j + gap] = arr[j]
+                j -= gap
+            arr[j + gap] = temp
+        gap = math.floor(gap/3)
+    return arr
+
+print(shellSort([9,5,3,3,6,1,7,22,53,4,7,9,8,2]))
