@@ -28,9 +28,9 @@ X = array([[0,0,1],[0,1,1],[1,0,1],[1,1,1],[1,0,0]])
 y = array([[0,1,1,0,1]]).T
 
 random.seed(1)
-# input layer -> hidden layer - 1 四个神经元
+# input layer -> hidden layer - 5个神经元
 w0 = 2 * random.random((3, 5)) - 1
-# hidden layer -> output layer - 1 一个输出
+# hidden layer -> output layer - 1个输出
 w1 = 2 * random.random((5, 1)) - 1
 
 for it in range(500):
