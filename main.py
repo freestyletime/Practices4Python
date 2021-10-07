@@ -236,6 +236,16 @@ def twoSum(nums, target):
                 y = x + 1
 
     return [-1, -1]
+
+
+def solution(string, markers):
+    result = ""
+    for line in string.split("\n"):
+        for marker in markers:
+            if marker in line:
+                line = line.split(marker)[0].strip()
+        result += line + "\n"
+    return result[:-1]
     
 
 if __name__ == '__main__':
@@ -270,3 +280,6 @@ if __name__ == '__main__':
     print(twoSum([2, 7, 11, 15], 22))
     print(twoSum([2, 7, 11, 15], 26))
     print(twoSum([2, 7, 11, 15], 100))
+
+    print(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"]))
+    print(solution("a #b\nc\nd $e f g", ["#", "$"]))
