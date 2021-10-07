@@ -238,7 +238,7 @@ def twoSum(nums, target):
     return [-1, -1]
 
 
-def solution(string, markers):
+def filterX(string, markers):
     result = ""
     for line in string.split("\n"):
         for marker in markers:
@@ -246,6 +246,53 @@ def solution(string, markers):
                 line = line.split(marker)[0].strip()
         result += line + "\n"
     return result[:-1]
+
+
+def snail(snail_map):
+    result = []
+    l = len(snail_map)
+    if l == 0 or len(snail_map[0]) == 0: return result
+    # total step length
+    s = 2*l - 1
+    # every step length
+    rules = [l]
+    # direction 0->right/1->down/2->left/3->up
+    d = 0 # init state 0
+    while l > 1:
+        l -= 1
+        rules.append(l)
+        rules.append(l)
+    
+    # x and y are current indexs for arrys
+    x = 0
+    y = -1
+
+    for i in range(s):
+        for i in range(rules[i]):
+            if d % 4 == 0:
+                y += 1
+                result.append(snail_map[x][y])
+            elif d % 4 == 1:
+                x += 1
+                result.append(snail_map[x][y])
+            elif d % 4 == 2:
+                y -= 1
+                result.append(snail_map[x][y])
+            elif d % 4 == 3:
+                x -= 1
+                result.append(snail_map[x][y])
+        d += 1
+
+    return result
+
+def snail1(array):
+    a = []
+    while array:
+        a.extend(list(array.pop(0)))
+        array = zip(*array)
+        array = list(array)
+        array.reverse()
+    return a
     
 
 if __name__ == '__main__':
@@ -281,5 +328,22 @@ if __name__ == '__main__':
     print(twoSum([2, 7, 11, 15], 26))
     print(twoSum([2, 7, 11, 15], 100))
 
-    print(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"]))
-    print(solution("a #b\nc\nd $e f g", ["#", "$"]))
+    print(filterX("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"]))
+    print(filterX("a #b\nc\nd $e f g", ["#", "$"]))
+
+
+    array = [[1,2,3],
+             [4,5,6],
+             [7,8,9]]
+    expected = [1,2,3,6,9,8,7,4,5]
+    print(snail(array))
+    array1 = [[1,2,3,15],
+              [8,9,4,11],
+              [7,6,5,24],
+              [7,6,5,10]]
+              
+    print(*array1)
+    array1.reverse()
+    print(array1)
+    print(snail1(array1))
+   
