@@ -8,6 +8,33 @@ import javax.crypto.spec.DESKeySpec;
 
 import java.util.Base64;
 
+/* 
+	Solution steps
+ 		1. There are 5 known conditions namely 
+			Adopting DES encryption
+			Plaintext
+			Ciphertext(base64 decode)
+			Key Fragment[(70:AD:57:00:F0:EF / 96 bits) (DES key standard is 16 hexs / 128 bits)]
+			Mode of operation (ECB\PKCS5PAdding)
+		
+		2. So, we can complement the rest of the key (4 hexs / 32 bits) then 
+			use this guessed key to encrypt the given plaintext and we will get the result, a new ciphertext.
+		
+		3. Let this new ciphertext compares the given one. 
+			if they are identical, the key you guessed is correct.
+			otherwise this key is incorrect.
+			
+		
+		We can download a java file about DES encryption and decryption functions in moodle.
+		And use python code produces all possible DES keys.
+		(the posibility of key is 16 pow 4 equals 65536)
+		Then we use java code to read these keys line by line.
+		Every line we read is a DES key (we need to traslate hex string to bytes)
+		Whilst use it to encrypt the Plaintext.
+		Finilly, we can get a correct answer with time.
+
+*/ 
+
 public class Solution {
 	public static void main(String[] args) throws Exception {
 		Key key;
