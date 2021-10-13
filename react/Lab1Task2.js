@@ -7,6 +7,7 @@ function num_occupants_filter(num) {
     if (c.num_occupants <= num) return c;
   };
 }
+
 class App extends Component {
   render() {
     let cars = carParkObjectsArray;
@@ -34,7 +35,7 @@ class App extends Component {
         <div className="PART B">
           <h3>
             [TASK PART B] Write a filter function which only prints out or
-            renders objects in the ¡®carParkObjectsArray¡¯ array by filtering
+            renders objects in the ï¿½ï¿½carParkObjectsArrayï¿½ï¿½ array by filtering
             based on the num_occupants property.
           </h3>
 
