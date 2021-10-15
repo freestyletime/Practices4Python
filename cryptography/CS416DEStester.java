@@ -1,8 +1,10 @@
 
 import java.io.*;
 import java.security.*;
+import java.security.spec.KeySpec;
 
 import javax.crypto.*;
+import javax.crypto.spec.DESKeySpec;
 
 import sun.misc.*;
 import java.util.Base64;
@@ -22,11 +24,12 @@ public class CS416DEStester {
 
 		Key key;
 		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream("DESSecretKey.ser"));
-
-			key = (Key) in.readObject();
-
-			in.close();
+			String line = "70AD5701F1EFFEC7";
+			KeySpec keySpec = new DESKeySpec(convertHexStringToByteArray(line));
+            key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./cryptography/DESSecretKey.ser"));
+			out.writeObject(key);
+			out.close();
 		} catch (FileNotFoundException fnfe) {
 
 			System.out.println("KEy file not found, rolling my own now \n\n");
@@ -54,7 +57,6 @@ public class CS416DEStester {
 
 		System.out.println("__________________________________________\n");
 
-		System.out.println("key is " + key.toString() + "\n\n");
 		System.out.println("key is " + hex_output + "\n\n");
 
 		System.out.println("length of the key is " + pretty_key.length + " bytes \n");
@@ -115,4 +117,16 @@ public class CS416DEStester {
 			return (char) ('A' + (i - 10));
 	}
 
+	public static byte[] convertHexStringToByteArray(String hexString) {
+        if ((hexString.length() % 2) != 0) {
+            throw new IllegalArgumentException("Invalid hex string (length % 2 != 0)");
+        }
+
+        byte[] array = new byte[hexString.length() / 2];
+        for (int i = 0, arrayIndex = 0; i < hexString.length(); i += 2, arrayIndex++) {
+            array[arrayIndex] = Integer.valueOf(hexString.substring(i, i + 2), 16).byteValue();
+        }
+
+        return array;
+    }
 }

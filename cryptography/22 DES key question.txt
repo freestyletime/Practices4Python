@@ -1,5 +1,3 @@
-
-
 The following information has been recovered from a DES encryption
 
 Plaintext 	    	The password is URA ONI KUDAKI

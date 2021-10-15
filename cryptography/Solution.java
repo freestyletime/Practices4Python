@@ -7,6 +7,7 @@ import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 
 import java.util.Base64;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /* 
 	Solution steps
@@ -36,28 +37,24 @@ import java.util.Base64;
 */ 
 
 public class Solution {
+
+	static AtomicBoolean atom = new AtomicBoolean(false);
 	public static void main(String[] args) throws Exception {
-		Key key;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(new File("./cryptography/keys.ser")));
 			String line;
 			while ((line = br.readLine()) != null) {
-				KeySpec keySpec = new DESKeySpec(convertHexStringToByteArray(line));
-            	key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
-				if (encryption(key)) break;
+				final KeySpec keySpec = new DESKeySpec(convertHexStringToByteArray(line));
+            	final Key key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
+				atom.set(encryption(key));
+				if (atom.get()) break;
 			}
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("Key file not found, rolling my own now \n\n");
-			KeyGenerator generator = KeyGenerator.getInstance("DES");
-			generator.init(new SecureRandom());
-			key = generator.generateKey();
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DESSecretKey.ser"));
-			out.writeObject(key);
-			out.close();
 		}
 	}
 
-	private static boolean encryption(Key key) throws NoSuchAlgorithmException, NoSuchPaddingException,
+	private static boolean encryption(final Key key) throws NoSuchAlgorithmException, NoSuchPaddingException,
 			InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
 
 		String plainText = "The password is URA ONI KUDAKI";
