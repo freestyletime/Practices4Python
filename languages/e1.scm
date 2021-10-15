@@ -1,4 +1,6 @@
 ;;;
+https://groups.csail.mit.edu/mac/ftpdir/scheme-7.4/doc-html/scheme_8.html
+
 Define a Scheme function CROSS-MAP which takes a binary function
 F and two lists XS and YS, and returns a list of the result of applying F
 to each possible pair of elements with the first taken from XS and the
