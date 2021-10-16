@@ -293,6 +293,16 @@ def snail1(array):
         array = list(array)
         array.reverse()
     return a
+
+def solution(number):
+    def solution2(x,y):
+        result = 0
+        init = x
+        while x < y:
+            result += x
+            x += init
+        return result
+    return solution2(3, number) + solution2(5, number) - solution2(15, number) 
     
 
 if __name__ == '__main__':
@@ -346,4 +356,7 @@ if __name__ == '__main__':
     array1.reverse()
     print(array1)
     print(snail1(array1))
-   
+
+    print(solution(10))
+    print(solution(20))
+    print(solution(200))
