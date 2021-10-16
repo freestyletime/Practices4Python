@@ -303,7 +303,50 @@ def solution(number):
             x += init
         return result
     return solution2(3, number) + solution2(5, number) - solution2(15, number) 
+
+def valid_solution(board):
+    #  column to row
+    def r2c(matrix):
+        matrix = zip(*matrix)
+        return list(matrix)
+   
+    # get sub-grid
+    # matrix - 9*9 | n - number(1-9)
+    def m3x3(matrix, n):
+        r, x , y = [], 0, 6 if n%3 == 0 else 3*(n%3 - 1)
+        
+        if n < 4: x = 0
+        elif n < 7: x = 3
+        else: x = 6
+
+        for i1, row in enumerate(matrix):
+            if i1 >= x and i1 < x + 3:
+                r.extend(row[y:y+3])
+            elif i1 == x + 3:
+                break
+        return r
     
+    def check_list(row):
+        if len(row) == 9:
+            if sum(row) == 45:
+                for e in row:
+                    if e < 1 or e > 9: return False
+                    if row.count(e) != 1: return False
+                return True
+        return False
+
+    # check rows
+    def check(matrix):
+        for row in matrix:
+            if not check_list(row): return False
+        return True;
+
+    def check_3x3(matrix):
+        for i in range(1, 10):
+            if not check_list(m3x3(matrix, i)): return False
+        return True
+    
+    return check_3x3(board) and check(board) and check(r2c(board))
 
 if __name__ == '__main__':
     print(to_jaden_case("Hello world, my mother is beautiful woman absolutly!"))
@@ -351,12 +394,28 @@ if __name__ == '__main__':
               [8,9,4,11],
               [7,6,5,24],
               [7,6,5,10]]
-              
-    print(*array1)
-    array1.reverse()
-    print(array1)
     print(snail1(array1))
 
     print(solution(10))
     print(solution(20))
     print(solution(200))
+
+    print(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+                          [6, 7, 2, 1, 9, 5, 3, 4, 8],
+                          [1, 9, 8, 3, 4, 2, 5, 6, 7],
+                          [8, 5, 9, 7, 6, 1, 4, 2, 3],
+                          [4, 2, 6, 8, 5, 3, 7, 9, 1],
+                          [7, 1, 3, 9, 2, 4, 8, 5, 6],
+                          [9, 6, 1, 5, 3, 7, 2, 8, 4],
+                          [2, 8, 7, 4, 1, 9, 6, 3, 5],
+                          [3, 4, 5, 2, 8, 6, 1, 7, 9]]));
+
+    # print(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+    #                       [6, 7, 2, 1, 9, 0, 3, 4, 9],
+    #                       [1, 0, 0, 3, 4, 2, 5, 6, 0],
+    #                       [8, 5, 9, 7, 6, 1, 0, 2, 0],
+    #                       [4, 2, 6, 8, 5, 3, 7, 9, 1],
+    #                       [7, 1, 3, 9, 2, 4, 8, 5, 6],
+    #                       [9, 0, 1, 5, 3, 7, 2, 1, 4],
+    #                       [2, 8, 7, 4, 1, 9, 6, 3, 5],
+    #                       [3, 0, 0, 4, 8, 1, 1, 7, 9]]))
