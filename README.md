@@ -4,13 +4,12 @@ Computation & Complexity, Machine Learning & Neural Network,
 Mobile Development, Data Structure & Algorithm.
 
 
-## 运行项目(running project)
+## 语言相关(Reference)
 
-Python3     => [Doc](https://docs.python.org/3/)
-Java        => [Doc](https://docs.oracle.com/en/java)
-JS/HTML     => [Tutorial](https://www.w3schools.com/)
-Racket      => [Tutorial](https://tyrchen.github.io/racket-book/index.html)
-            => [Doc](https://docs.racket-lang.org/reference/index.html)
+* Python3     => [Doc](https://docs.python.org/3/)
+* Java        => [Doc](https://docs.oracle.com/en/java)
+* JS/HTML     => [Tutorial](https://www.w3schools.com/)
+* Racket      => [Tutorial](https://tyrchen.github.io/racket-book/index.html) | [Doc](https://docs.racket-lang.org/reference/index.html)
 
 
 #### 克隆项目(clone project)
