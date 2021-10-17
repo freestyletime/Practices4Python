@@ -2,14 +2,17 @@
 Personal Python3 routine and the other languages practices.
 Computation & Complexity, Machine Learning & Neural Network, 
 Mobile Development, Data Structure & Algorithm.
-
+gi t
 
 ## 语言相关(Reference)
 
+* Coding Practice => [Doc](https://www.codewars.com/)
 * Python3     => [Doc](https://docs.python.org/3/)
 * Java        => [Doc](https://docs.oracle.com/en/java)
 * JS/HTML     => [Tutorial](https://www.w3schools.com/)
 * Racket      => [Tutorial](https://tyrchen.github.io/racket-book/index.html) | [Doc](https://docs.racket-lang.org/reference/index.html)
+* Dood Online IDE => [Code](https://codesandbox.io/)
+* Raket Online IDE => [Code](https://replit.com/) | [Code](https://onecompiler.com/racket)
 
 
 #### 克隆项目(clone project)
