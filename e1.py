@@ -1,3 +1,8 @@
+ # Chris Chen 
+ # christianchen@gmail.com 
+ # Created on Sun Oct 17 2021
+ # ^V^ Enjoy every day.
+
 # For information on knight moves, see https://en.wikipedia.org/wiki/Knight_%28chess%29
 # For information on algebraic notation, see https://en.wikipedia.org/wiki/Algebraic_notation_%28chess%29
 def knight(p1, p2):

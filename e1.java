@@ -3,6 +3,12 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
+/*
+ * Chris Chen 
+ * christianchen@gmail.com 
+ * Created on Sun Oct 17 2021
+ * ^V^ Enjoy every day.
+ */
 public class e1 {
     public static void main(String[] args) {
         System.out.println(solution("abc", "bc"));
@@ -19,7 +25,6 @@ public class e1 {
         int[] result = twoSum(new int[]{1,2,3}, 4);
         System.out.println(result[0]);
         System.out.println(result[1]);
-        System.out.println(knight("a3", "b5"));
     }
 
     public static boolean solution(String str, String ending) {
@@ -139,17 +144,5 @@ public class e1 {
             }
         }
         return null;
-    }
-
-    /**
-     * For information on knight moves, see https://en.wikipedia.org/wiki/Knight_%28chess%29
-     * For information on algebraic notation, see https://en.wikipedia.org/wiki/Algebraic_notation_%28chess%29
-     * @param p1 start position
-     * @param p2 end position
-     * @return the least step the knight should move
-     */
-    public static int knight(String p1, String p2){
-        
-        return 0;
     }
 }
