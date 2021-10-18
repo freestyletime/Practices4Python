@@ -1,7 +1,10 @@
+package javaMe;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 
 /*
  * Chris Chen 
@@ -19,12 +22,14 @@ public class e1 {
         System.out.println(order("4of Fo1r pe6ople g3ood th5e the2"));
         System.out.println(order2("Fo1r the2 g3ood 4of th5e pe6ople"));
         System.out.println(order("Empty input should return empty string"));
-        
+
         System.out.println(GetSum(-1, 2));
         System.out.println(GetSum(1, -4));
-        int[] result = twoSum(new int[]{1,2,3}, 4);
+        int[] result = twoSum(new int[] { 1, 2, 3 }, 4);
         System.out.println(result[0]);
         System.out.println(result[1]);
+        System.out.println(pigIt("Pig latin is cool"));
+        System.out.println(pigIt("This is my string"));
     }
 
     public static boolean solution(String str, String ending) {
@@ -131,18 +136,25 @@ public class e1 {
         }
 
         int sum = 0;
-        while (a < b) sum += a++;
+        while (a < b)
+            sum += a++;
         return sum + b;
     }
 
     public static int[] twoSum(int[] numbers, int target) {
-        Loop:for (int i = 0; i < numbers.length - 1; i++) {
+        Loop: for (int i = 0; i < numbers.length - 1; i++) {
             for (int n = i + 1; n < numbers.length; n++) {
-                if((numbers[i] + numbers[n]) == target){
+                if ((numbers[i] + numbers[n]) == target) {
                     return new int[] { i, n };
                 }
             }
         }
         return null;
+    }
+
+    public static String pigIt(String str) {
+        return Arrays.stream(str.split(" "))
+                .map(n -> n.matches("[^A-Za-z]")? n : n.substring(1).concat(n.substring(0, 1)).concat("ay"))
+                .reduce((a, b) -> a + " " + b).get();
     }
 }

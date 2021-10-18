@@ -1,8 +1,7 @@
 # Practices4Python
 Personal Python3 routine and the other languages practices.
 Computation & Complexity, Machine Learning & Neural Network, 
-Mobile Development, Data Structure & Algorithm.
-gi t
+Mobile Development, Data Structure & Algorithm. 
 
 ## 语言相关(Reference)
 
