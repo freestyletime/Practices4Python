@@ -1,6 +1,7 @@
 package javaMe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class e2 {
@@ -8,6 +9,9 @@ public class e2 {
         int[] i = parse("iiisdoso");
         for (int x : i)
             System.out.println(x);
+
+        System.out.println(spinWords("Welcome"));
+        System.out.println(spinWords("Hey fellow warriors"));
     }
 
     public static int[] parse(String data) {
@@ -23,5 +27,11 @@ public class e2 {
             }
         }
         return list.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public static String spinWords(String sentence) {
+        return Arrays.stream(sentence.split(" "))
+                .map(n -> n.length() < 5 ? n : (new StringBuilder(n).reverse().toString()))
+                .reduce((a, b) -> a + " " + b).get();
     }
 }

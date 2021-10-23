@@ -7,7 +7,6 @@ import java.security.spec.KeySpec;
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 
-import sun.misc.*;
 import java.util.Base64;
 
 public class CS416DEStester {

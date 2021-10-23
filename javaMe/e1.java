@@ -53,7 +53,6 @@ public class e1 {
             int ticket = 25;
             int c_25 = 0;
             int c_50 = 0;
-            int c_100 = 0;
 
             for (int m : peopleInLine) {
                 int change = m - ticket;
@@ -73,10 +72,8 @@ public class e1 {
                             if (c_50 > 0) {
                                 c_25 -= 1;
                                 c_50 -= 1;
-                                c_100 += 1;
                             } else if (c_25 > 2) {
                                 c_25 -= 3;
-                                c_100 += 1;
                             } else
                                 return no;
                         } else
@@ -141,7 +138,7 @@ public class e1 {
     }
 
     public static int[] twoSum(int[] numbers, int target) {
-        Loop: for (int i = 0; i < numbers.length - 1; i++) {
+        for (int i = 0; i < numbers.length - 1; i++) {
             for (int n = i + 1; n < numbers.length; n++) {
                 if ((numbers[i] + numbers[n]) == target) {
                     return new int[] { i, n };
