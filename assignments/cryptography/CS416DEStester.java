@@ -27,7 +27,7 @@ public class CS416DEStester {
 		try {
 			String line = "70AD5701F1EFFEC7";
 			KeySpec keySpec = new DESKeySpec(convertHexStringToByteArray(line));
-            key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
+			key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./cryptography/DESSecretKey.ser"));
 			out.writeObject(key);
 			out.close();
@@ -119,15 +119,15 @@ public class CS416DEStester {
 	}
 
 	public static byte[] convertHexStringToByteArray(String hexString) {
-        if ((hexString.length() % 2) != 0) {
-            throw new IllegalArgumentException("Invalid hex string (length % 2 != 0)");
-        }
+		if ((hexString.length() % 2) != 0) {
+			throw new IllegalArgumentException("Invalid hex string (length % 2 != 0)");
+		}
 
-        byte[] array = new byte[hexString.length() / 2];
-        for (int i = 0, arrayIndex = 0; i < hexString.length(); i += 2, arrayIndex++) {
-            array[arrayIndex] = Integer.valueOf(hexString.substring(i, i + 2), 16).byteValue();
-        }
+		byte[] array = new byte[hexString.length() / 2];
+		for (int i = 0, arrayIndex = 0; i < hexString.length(); i += 2, arrayIndex++) {
+			array[arrayIndex] = Integer.valueOf(hexString.substring(i, i + 2), 16).byteValue();
+		}
 
-        return array;
-    }
+		return array;
+	}
 }
