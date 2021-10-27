@@ -51,11 +51,8 @@ public class e2 {
     public static String factors(int n) {
         StringBuilder result = new StringBuilder();
         for (int i = 2;; i++) {
-            if(isPrime(n)) {
-                result.append("(" + n + ")");
-                return result.toString();
-            }
-            if (isPrime(i)) {
+            if(isPrime(n))  result.append("(" + n + ")").toString();
+            else if (isPrime(i)) {
                 for (int r = 0, m = 1;; m++) {
                     double p = Math.pow(i, m);
                     if (n % p == 0)
@@ -66,7 +63,7 @@ public class e2 {
                         else result.append("(" + i + "**" + r + ")");
                         if (n == 1) return result.toString();
                         else break;
-                        } else break;
+                    } else break;
                 }
             }
         }

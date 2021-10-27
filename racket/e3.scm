@@ -15,8 +15,7 @@
 		      (list '%closure vars body env)))
 		   ((assoc h macro-list)
 		    => (λ (x) (
-		      my-eval ((cadr x) s)
-				       env)))
+		      my-eval ((cadr x) s) env)))
 		   (else
 		    (let ((vals (map (λ (t)
 				       (my-eval t env))
