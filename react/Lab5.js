@@ -132,13 +132,13 @@ class App extends Component {
                 <h4>
                   – The total value of BUY rates:
                   {this.state.apiData.reduce(function (result, item) {
-                    return result + item.rates.buy;
+                    return Math.round(result + item.rates.buy);
                   }, 0)}
                 </h4>
                 <h4>
                   – The total value of SELL rates:
                   {this.state.apiData.reduce(function (result, item) {
-                    return result + item.rates.sell;
+                    return Math.round(result + item.rates.sell);
                   }, 0)}
                 </h4>
               </tfoot>
