@@ -51,7 +51,6 @@ class ComponentB extends Component {
       let title = item.title.toLowerCase();
       let artist = item.artist.toLowerCase();
       let topgenre = item.topgenre.toLowerCase();
-      console.log(searchText);
       return (
         searchText !== "" &&
         (title.includes(searchText.toLowerCase()) ||
