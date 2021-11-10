@@ -56,4 +56,18 @@ print(knight('a1', 'f4'))
 print(knight('a1', 'h8'))
 
 print(f'你所求的b值(模逆)为：{findModReverse(379, 676)}')
+
+import numpy as np
+sizes = [2,3,1]
+biases = [np.random.randn(y, 1) for y in sizes[1:]]
+weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+print(biases)
+print(weights)
+# np.random.shuffle(sizes)
+# print(sizes)
+
+nabla_b = [np.zeros(b.shape) for b in biases]
+nabla_w = [np.zeros(w.shape) for w in weights]
+print(nabla_b)
+print(nabla_w)
 ##################################################################
