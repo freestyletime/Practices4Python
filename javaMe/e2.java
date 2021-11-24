@@ -1,8 +1,6 @@
 package javaMe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class e2 {
     public static void main(String[] args) {
@@ -12,10 +10,9 @@ public class e2 {
 
         System.out.println(spinWords("Welcome"));
         System.out.println(spinWords("Hey fellow warriors"));
-        System.out.println(factors(86240));
-        System.out.println(factors(7775460));
-        System.out.println(factors(10705716));
 
+        int[] lst = new int[] {107, 158, 204, 100, 118, 123, 126, 110, 116, 100};
+        System.out.println(sumOfDivided(lst));
     }
 
     public static int[] parse(String data) {
@@ -39,33 +36,39 @@ public class e2 {
                 .reduce((a, b) -> a + " " + b).get();
     }
 
-    /** Check the prime number */
-    static boolean isPrime(int n) {
-        if (n <= 1) return false; 
-        else if (n == 2) return true;
-        else if (n % 2 == 0) return false;
-        for (int i = 3; i <= Math.sqrt(n); i += 2) if (n % i == 0) return false;
+    public static boolean isPrime(int i){
+        if(i == 2) return true;
+        for(int q = 2; q < i; q++) if(i % q == 0) return false;
         return true;
     }
 
-    public static String factors(int n) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 2;; i++) {
-            if(isPrime(n))  result.append("(" + n + ")").toString();
-            else if (isPrime(i)) {
-                for (int r = 0, m = 1;; m++) {
-                    double p = Math.pow(i, m);
-                    if (n % p == 0)
-                        r = m;
-                    else if(r != 0){
-                        n /= Math.pow(i, r);
-                        if (r == 1) result.append("(" + i + ")");
-                        else result.append("(" + i + "**" + r + ")");
-                        if (n == 1) return result.toString();
-                        else break;
-                    } else break;
-                }
+    public static List<Integer> findPrimeNums(int i){
+        List<Integer> is = new ArrayList<>();
+        if(i < 0) i = - i;
+        for(int p = 2; p <= i; p++)
+            if((i % p == 0) && isPrime(p)) is.add(p);
+        return is;
+    }
+    
+    public static String sumOfDivided(int[] l) {
+        Map<Integer, List<Integer>> ds = new HashMap<>();
+        TreeMap<Integer, Integer> re = new TreeMap<>();
+        Map<Integer, Integer> ct = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i : l) {
+            if(ds.containsKey(i)) ct.put(i, ct.containsKey(i) ? ct.get(i) + 1 : 1);
+            ds.put(i, findPrimeNums(i));
+        }
+        for (Map.Entry<Integer, List<Integer>> entry : ds.entrySet()) {
+            int k = entry.getKey();
+            for(int p : entry.getValue()){
+                int u = ct.containsKey(k) ? k + k * ct.get(k) : k;
+                re.put(p, re.containsKey(p) ? re.get(p) + u : u);
             }
         }
+        for (Map.Entry<Integer, Integer> entry : re.entrySet()) 
+            sb.append("(").append(entry.getKey()).append(" ")
+            .append(entry.getValue()).append(")");
+        return sb.toString();
     }
 }
