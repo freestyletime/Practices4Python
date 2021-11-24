@@ -12,6 +12,7 @@ Mobile Development, Data Structure & Algorithm.
 * Racket      => [Tutorial](https://tyrchen.github.io/racket-book/index.html) | [Doc](https://docs.racket-lang.org/reference/index.html)
 * Dood Online IDE => [Code](https://codesandbox.io/)
 * Racket Online IDE => [Code](https://replit.com/) | [Code](https://onecompiler.com/racket)
+* Haskell   => [Tutorial](http://learnyouahaskell.com/chapters) | [Code](https://www.jdoodle.com/execute-haskell-online/)
 
 
 #### 克隆项目(clone project)
