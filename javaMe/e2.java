@@ -1,6 +1,8 @@
 package javaMe;
 
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class e2 {
     public static void main(String[] args) {
@@ -11,8 +13,17 @@ public class e2 {
         System.out.println(spinWords("Welcome"));
         System.out.println(spinWords("Hey fellow warriors"));
 
-        int[] lst = new int[] {107, 158, 204, 100, 118, 123, 126, 110, 116, 100};
+        int[] lst = new int[] { 107, 158, 204, 100, 118, 123, 126, 110, 116, 100 };
         System.out.println(sumOfDivided(lst));
+        System.out.println(top3("  //wont won't won't ").toString());
+        System.out.println(top3("e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e").toString());
+        System.out.println(top3("  , e   .. ").toString());
+        System.out.println(top3("In a village of La Mancha, the name of which I have no desire to call to"
+        + "mind, there lived not long since one of those gentlemen that keep a lance"
+        + "in the lance-rack, an old buckler, a lean hack, and a greyhound for"
+        + "coursing. An olla of rather more beef than mutton, a salad on most"
+        + "nights, scraps on Saturdays, lentils on Fridays, and a pigeon or so extra"
+        + "on Sundays, made away with three-quarters of his income.").toString());
     }
 
     public static int[] parse(String data) {
@@ -70,5 +81,43 @@ public class e2 {
             sb.append("(").append(entry.getKey()).append(" ")
             .append(entry.getValue()).append(")");
         return sb.toString();
+    }
+
+    public static List<String> top3(String s) {
+        String str = s.replaceAll("[^(a-zA-Z)(')]", " ").trim();
+        List<String> cons = new LinkedList<>();
+        if(str.isEmpty()) return cons; 
+        String[] ws = str.split("\\s+");
+        Map<String, Integer> rt = new HashMap<>();
+        for(String w : ws) {
+            if(w.matches("^[']+[a-zA-Z]*") || w.matches("[a-zA-Z]*[']+$")) continue;
+            rt.put(w, rt.containsKey(w)? rt.get(w) + 1 : 1);
+        }
+        
+        for(Entry<String, Integer> entry : rt.entrySet()) {
+            int i = 0;
+            while(i <= cons.size()){
+                if(cons.size() == i){
+                    cons.add(i, entry.getKey());
+                    break;
+                }else{
+                    String st = cons.get(i);
+                    if(rt.get(st) < entry.getValue()){
+                        cons.add(i, entry.getKey());
+                        break;
+                    }else if(rt.get(st) == entry.getValue()){
+                        if(st.compareTo(entry.getKey()) > 0) {
+                            cons.add(i, entry.getKey());
+                            break;
+                        }
+                    }
+                    i +=1;
+                }
+            }
+        }
+        List<String> cons2 = new ArrayList<>();
+        cons = cons.size() >= 3 ? cons.subList(0, 3) : cons.size() == 0 ? cons : cons.subList(0, cons.size());
+        for (String ss : cons) cons2.add(ss.toLowerCase());
+        return cons2;
     }
 }
