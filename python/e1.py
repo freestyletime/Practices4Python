@@ -57,17 +57,53 @@ print(knight('a1', 'h8'))
 
 print(f'你所求的b值(模逆)为：{findModReverse(379, 676)}')
 
-import numpy as np
-sizes = [2,3,1]
-biases = [np.random.randn(y, 1) for y in sizes[1:]]
-weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
-print(biases)
-print(weights)
-# np.random.shuffle(sizes)
-# print(sizes)
+# import numpy as np
+# sizes = [2,3,1]
+# biases = [np.random.randn(y, 1) for y in sizes[1:]]
+# weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+# print(biases)
+# print(weights)
+# # np.random.shuffle(sizes)
+# # print(sizes)
 
-nabla_b = [np.zeros(b.shape) for b in biases]
-nabla_w = [np.zeros(w.shape) for w in weights]
-print(nabla_b)
-print(nabla_w)
+# nabla_b = [np.zeros(b.shape) for b in biases]
+# nabla_w = [np.zeros(w.shape) for w in weights]
+# print(nabla_b)
+# print(nabla_w)
 ##################################################################
+
+def count_patterns_from(firstPoint, length):
+    def produceL(l, o): return l + [o]
+    def produceR():
+        e1 = [['A','C','G','I'], ['B','H'], ['D','F'], ['E']]
+        e2 = [['A','B','C'], ['A','D','G'], ['A','E','I'], ['B','E','H'], ['C','E','G'],
+              ['C','F','I'], ['C','B','A'], ['D','E','F'], ['F','E','D'], ['G','H','I'], 
+              ['G','D','A'], ['G','E','C'], ['H','E','B'], ['I','E','A'], ['I','F','C'], ['I','H','G']]
+        return e1, e2
+    if firstPoint not in ['A','B','C','D','E','F','G','H','I'] or length <= 0 or length > 9: return 0
+    elif length == 1: return 1
+    else:
+        rs = [[firstPoint]]
+        for i in range(1, length):
+            e1, e2 = produceR()
+            t = []
+            for r in rs:
+                last = r[-1]
+                if i > 1:
+                    for nn in e2:
+                        if last == nn[0] and nn[1] in r and nn[2] not in r: t.append(produceL(r, nn[2]))
+                for n in e1:
+                    if last not in n:
+                        for m in n:
+                            if m not in r: t.append(produceL(r, m))
+            rs = t
+        return len(rs)
+
+print(count_patterns_from('A', 2))
+print(count_patterns_from('A', 3))
+print(count_patterns_from('A', 0))
+print(count_patterns_from('E', 14))
+print(count_patterns_from('B', 1))
+print(count_patterns_from('C', 2))
+print(count_patterns_from('E', 3))
+print(count_patterns_from('E', 5))
