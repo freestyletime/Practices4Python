@@ -1,4 +1,4 @@
-package assignments.cryptography;
+package assignments.cryptography.finalE.DES;
 
 import java.io.*;
 import java.security.*;
@@ -34,7 +34,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 		Every line we read is a DES key (we need to traslate hex string to bytes)
 		Whilst use it to encrypt the Plaintext.
 		Finilly, we can get a correct answer with time.
-
 */ 
 
 public class Solution {
@@ -42,10 +41,10 @@ public class Solution {
 	static AtomicBoolean atom = new AtomicBoolean(false);
 	public static void main(String[] args) throws Exception {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("./cryptography/keys.ser")));
+			BufferedReader br = new BufferedReader(new FileReader(new File("./assignments/cryptography/keys.ser")));
 			String line;
 			while ((line = br.readLine()) != null) {
-				final KeySpec keySpec = new DESKeySpec(convertHexStringToByteArray(line));
+				final KeySpec keySpec = new DESKeySpec(hexStringToByteArray(line));
             	final Key key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
 				atom.set(encryption(key));
 				if (atom.get()) break;
@@ -58,8 +57,8 @@ public class Solution {
 	private static boolean encryption(final Key key) throws NoSuchAlgorithmException, NoSuchPaddingException,
 			InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
 
-		String plainText = "The password is URA ONI KUDAKI";
-		String ciphertext = "8pRPVdSLU+XvaAQVBgJaAmuO5cLDrP8MK0ojgGayriQ=";
+		String plainText = "PrimeCurios";
+		String ciphertext = "g4T1HQebkEg5lHVM+lre4g==";
 		byte[] pretty_key = key.getEncoded();
 		String hex_output = "";
 		String eye;
@@ -125,16 +124,17 @@ public class Solution {
 			return (char) ('A' + (i - 10));
 	}
 
-	public static byte[] convertHexStringToByteArray(String hexString) {
-        if ((hexString.length() % 2) != 0) {
-            throw new IllegalArgumentException("Invalid hex string (length % 2 != 0)");
+	public static byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        try {
+            for (int i = 0; i < len; i += 2) {
+                data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                        + Character.digit(s.charAt(i+1), 16));
+            }
+        } catch (Exception e) {
+           // Log.d("", "Argument(s) for hexStringToByteArray(String s)"+ "was not a hex string");
         }
-
-        byte[] array = new byte[hexString.length() / 2];
-        for (int i = 0, arrayIndex = 0; i < hexString.length(); i += 2, arrayIndex++) {
-            array[arrayIndex] = Integer.valueOf(hexString.substring(i, i + 2), 16).byteValue();
-        }
-
-        return array;
+        return data;
     }
 }

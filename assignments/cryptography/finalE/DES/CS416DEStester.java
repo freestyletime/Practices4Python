@@ -1,11 +1,8 @@
-package assignments.cryptography;
+package assignments.cryptography.finalE.DES;
 
 import java.io.*;
 import java.security.*;
-import java.security.spec.KeySpec;
-
 import javax.crypto.*;
-import javax.crypto.spec.DESKeySpec;
 
 import java.util.Base64;
 
@@ -24,12 +21,9 @@ public class CS416DEStester {
 
 		Key key;
 		try {
-			String line = "70AD5701F1EFFEC7";
-			KeySpec keySpec = new DESKeySpec(convertHexStringToByteArray(line));
-			key = SecretKeyFactory.getInstance("DES").generateSecret(keySpec);
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./cryptography/DESSecretKey.ser"));
-			out.writeObject(key);
-			out.close();
+			
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./assignments/cryptography/DESSecretKey.ser"));
+			key =  (Key) ois.readObject();
 		} catch (FileNotFoundException fnfe) {
 
 			System.out.println("KEy file not found, rolling my own now \n\n");
@@ -85,7 +79,8 @@ public class CS416DEStester {
 			byte[] raw = Base64.getDecoder().decode(args[1]);
 			byte[] stringBytes = cipher.doFinal(raw);
 			String result = new String(stringBytes, "UTF8");
-			System.out.println("The recovered Plaintext is " + result);
+			System.out.println("The recovered Plaintext is: ");
+			System.out.println(result);
 
 		}
 		System.out.println("__________________________________________\n");

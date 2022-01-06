@@ -1,5 +1,6 @@
 # hex code cretor
-start_code = "70AD5700F0EF"
+start_code = "049104CD5701"
+
 keys = []
 
 def implement(text, result):
@@ -12,7 +13,7 @@ def implement(text, result):
 
 implement(start_code, keys)
 # save the keys
-with open('./cryptography/keys.ser','w') as file:
+with open('./assignments/cryptography/keys.ser','w') as file:
     for key in keys:
         file.write(key + '\n');
     file.close();

@@ -1,0 +1,81 @@
+{
+    RAR=10, GIG - > BUILD
+    PBB=11, ZEE - > ITS
+    RVW=28, GLQ - > TO
+    HTO=45, NHA - > THE
+    VPV=8, LZL - > AND
+    IIO=14, UUA - > A
+    VDG=13, LTX - > IN
+    IWD=13, UQT - > THAT
+    DAD=8,  TIT - > ORION
+    MTQ=12, CHJ - > OF
+    OHR=11, ANG - > BADGUYS
+    DCK=10, T
+}
+
+{ 
+    A : I,
+    B : M,
+    C : N,
+    D : T,
+    E : O,
+    F : V,
+    G : X,
+    H : P,
+    I : U,
+    J : Y
+    K : D
+    L : B,
+    M : C,
+    N : F,
+    O : A,
+    P : Z,
+    Q : J,
+    R : G,
+    S : K,
+    T : H,
+    U : E,
+    V : L,
+    W : Q,
+    X : W,
+    Y : S,
+    Z : R
+}
+
+{
+    RAR=10, GIG - > BUILD
+    HTO=45, NHA - > THE
+    FDA=4,  VTI - > PASSWORD
+    ETQ=5,  OHJ - > SUNSPOT
+    TVF=4, HLV - > WITHIN
+    KZV=4, DRL - > THIS
+    HHG=6, NNX - > AT
+    MTQ=12, CHJ - > OF
+    SHD=4, KNT - > WITHOUT
+    TZU=5, HRE - > AN
+    IJP=5, UYZ - > SOLARWINDS
+    PBB=11, ZMM - > WAS
+    NTV=11, FHL - > IT
+    RVW=28, GLQ - > TO
+    IWD=13, UQT - > THAT
+    SRU=5,  KGE - > ENVIRONMENT
+    VDG=13, LTX - > IN
+    OHR=11, ANG - > BADGUYS
+    XPP=4, WZZ - > COULD
+    XPT=5, WZH - > ACCESS
+    VPV=8, LZL - > AND
+    DAD=8, TIT - > ORION
+    LYY=4, BSS - > BY
+    DCK=10, TNR - > SERVES
+    IIO=14, UUA - > A
+    AZG=4, IPX - > RUTHLESS
+    UGA=4, EXI - > MALWARE
+    PUU=4, ZEE - > ITS
+    NEG=6, FOX - > HORSE
+    NCL=7, FNB - > DISCOTHEQUE
+    MGU=5, CXE - > CODE
+    ZSS=5, RKK - > USED
+    QCL=4, JNB - > DEVOLUTIONISTS
+    OEP=4, AOZ - > PARTICULAR
+    XQW=5, WJQ - > FOR
+}
