@@ -1,0 +1,150 @@
+1. Basic Type
+    *Int
+    *Integer
+    *Float
+    *Double
+    *Char
+    *Bool
+
+2. Function Call
+f x => f(x)
+g x y => g(x, y)
+
+3. Operation symbols
++ - * /
+not
+< > == /=
+mod
+even
+odd
+div
+sum
+max
+min
+
+4. list
+extend: [1,2] ++ [3,4]
+add:    1:[2,3,4]
+take 3 [1,2,3,4]
+drop 3 [1,2,3,4]
+head [1,2,3,4]
+tail [1,2,3,4]
+last [5,4,3,2,1]
+init [5,4,3,2,1]
+length [5,4,3,2,1]
+null [1,2,3]
+reverse [5,4,3,2,1]
+minimum [8,4,2,1,5,6]
+maximum [8,4,2,1,5,6]
+sum [5,2,1,6,3,2,5,7]
+product [6,2,1,2]
+4 `elem` [3,4,5,6]
+[1..20]
+[2,4..20]
+take 10 (cycle [1,2,3])
+take 10 (repeat 5)
+replicate 3 10
+
+5. List Comprehension
+[x*2 | x <- [1..10]]
+[x*2 | x <- [1..10], x*2 >= 12]
+[ x | x <- [50..100], x `mod` 7 == 3]
+
+boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
+boomBangs [7..13]
+
+[ x | x <- [10..20], x /= 13, x /= 15, x /= 19]
+[ x*y | x <- [2,5,10], y <- [8,10,11]]
+length' xs = sum [1 | _ <- xs]
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+
+let xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
+[ [ x | x <- xs, even x ] | xs <- xxs]
+
+6. Tuple
+fst (8,11)
+snd (8,11)
+zip [1,2,3,4,5] [5,5,5,5,5]
+zip [1 .. 5] ["one", "two", "three", "four", "five"]
+
+let rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
+
+7. Type
+:t 'a'
+:t True
+
+# declare the type first is a good behavior
+removeNonUppercase :: [Char] -> [Char]  
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+
+addThree :: Int -> Int -> Int -> Int  
+addThree x y z = x + y + z
+
+factorial :: Integer -> Integer  
+factorial n = product [1..n]
+
+8. Typeclass
+Eq (==, /=)
+Ord (<, >, <=, >=)
+Show
+Read
+Enum((), Bool, Char, Ordering, Int, Integer, Float, Double)
+Bounded(minBound, maxBound)
+Num
+Integral(Int, Integer)
+Floating(Float, Double)
+
+9. Advanced function
+
+quicksort :: (Ord a) => [a] -> [a]    
+quicksort [] = []    
+quicksort (x:xs) =     
+    let smallerSorted = quicksort (filter (<=x) xs)
+        biggerSorted = quicksort (filter (>x) xs)   
+    in  smallerSorted ++ [x] ++ biggerSorted  
+
+zipWith (+) [4,2,5,6] [2,6,2,3]  
+[6,8,7,9]
+
+map (+3) [1,5,3,1,6]
+[4,8,6,4,9] 
+
+filter (>3) [1,5,3,2,1,6,4,3,2,1]  
+[5,6,4]
+
+foldl (\acc x -> acc + x) 0 [1,2,3,4,5]
+15
+
+foldr (\acc x -> acc + x) 0 [1,2,3,4,5]
+15
+
+maximum' :: (Ord a) => [a] -> a  
+maximum' = foldr1 (\x acc -> if x > acc then x else acc)  
+
+reverse' :: [a] -> [a]  
+reverse' = foldl (\acc x -> x : acc) []  
+
+product' :: (Num a) => [a] -> a  
+product' = foldr1 (*)  
+
+filter' :: (a -> Bool) -> [a] -> [a]  
+filter' p = foldr (\x acc -> if p x then x : acc else acc) []  
+
+head' :: [a] -> a  
+head' = foldr1 (\x _ -> x)  
+
+last' :: [a] -> a  
+last' = foldl1 (\_ x -> x)  
+
+scanl (+) 0 [3,5,2,1]  
+[0,3,8,10,11]
+
+scanr (+) 0 [3,5,2,1]  
+[11,8,3,1,0]
+
+scanl (flip (:)) [] [3,2,1]
+[[],[3],[2,3],[1,2,3]]
+
+oddSquareSum :: Integer
+oddSquareSum = sum . takeWhile (<10000) . filter odd . map (^2) $ [1..]  
+

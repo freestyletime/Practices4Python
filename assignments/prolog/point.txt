@@ -1,0 +1,60 @@
+https://programmermagazine.github.io/201308/htm/article3.html
+%% *No Functions*
+%%    y=f(x)   (function)
+%%    f(x,y)   (prolog predicate)
+
+%% term    '.'(HEAD,TAIL)     represents list
+%% sugar:  [HEAD|TAIL]  =   .(HEAD,TAIL)
+%%         .(A,.(B,.(C,.(D,[]))))         [A,B,C,D]
+%%         .(A,.(B,.(C,.(D,TAIL))))       [A,B,C,D|TAIL]
+
+%% Type Checker for the Simply Typed Lambda Calculus
+
+%% λ Calc                Prolog
+%%  TERMS
+%%  -----
+%%  Var                   var    (symbol)
+%%  E E                   [E,E]
+%%  λ Var:Type . E        lam(var,Type,E)
+%%
+%%  TYPES
+%%  -----
+%%  Real, Char            real, char
+%%  Type -> Type          arr(Type,Type)
+
+%% "FACTS":
+
+man(chris).
+
+# # #
+, represents and
+; represents or
+
+%% "CLAUSE":
+
+sibling(X, Y) :- parent(Z, X), parent(Z, Y).
+
+# # #
+-> represents conditional judgement means 
+if something is true it'll get a result which is after ->.
+
+clause :-
+    (   cond1 ->
+        goal1
+    ;   cond2 ->
+        goal2
+    ;   goal3
+    ).
+
+%% "QUERY":
+The only difference between fact and query is before the fact
+there is a ?-, which is query.
+
+?-colorify(A,B,C,D,E).
+
+
+%% common functions
+setof(N, (member(N, [5,6,1,3,2,7,8,9,1,2,3,4]), N>3, N<8), Y)
+length([a,b,c], N).
+member(-, +)
+findall(X, between(2, 6, X), Xs).

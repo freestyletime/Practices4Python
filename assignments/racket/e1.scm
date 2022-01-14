@@ -55,3 +55,52 @@ Example:
 
 ;;; Output:
 ;;; '((96 97 98 99) (196 197 198 199) (296 297 298 299))
+
+
+;;; solution 3
+
+(define cross-map
+(lambda (f e1 e2)
+  (for*/list ([x e1]
+              [y e2])
+              (f x y))))
+
+(cross-map - '(100 200 300) '(4 3 2 1))
+
+;;;Output:
+;;;'(96 97 98 99 196 197 198 199 296 297 298 299)
+
+
+;;; Define a Scheme function SCATTER-GATHER 
+which takes two arguments, a list INDICES of indices and 
+a list VALS of values, and returns a list of the same length 
+as INDICES but with each value K replaced by the K-th element 
+of VALS, or if that is out of range, by #f.
+Example:
+(scatter-gather '(0 1 4 1 1 7 2) '(a b c d e)) => (a b e b b #f c)
+;;;
+
+(define scatter-gather 
+(lambda (e1 e2)
+( let ([x (length e2)])
+  (for/list ([i e1]) (if (< i x) (list-ref e2 i) #f)))))
+(scatter-gather '(0 1 4 1 1 7 2) '(a b c d e))
+
+;;;Output:
+;;;'(a b e b b #f c)
+
+
+
+
+(define maj3-filter
+(lambda (f1 f2 f3 e) 
+  (if (null? (car e))
+        '()
+        (let  ([x (car e)])
+        (cond 
+            ((and (f1 x) (f2 x)) (cons x (maj3-filter f1 f2 f3 (cdr e))))
+            ((and (f1 x) (f3 x)) (cons x (maj3-filter f1 f2 f3 (cdr e))))
+            ((and (f2 x) (f3 x)) (cons x (maj3-filter f1 f2 f3 (cdr e))))
+            (else (list (maj3-filter f1 f2 f3 (cdr e))))
+    )
+))))
