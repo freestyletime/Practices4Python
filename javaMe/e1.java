@@ -2,8 +2,11 @@ package javaMe;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Map.Entry;
 
 /*
  * Chris Chen 
@@ -29,6 +32,8 @@ public class e1 {
         System.out.println(result[1]);
         System.out.println(pigIt("Pig latin is cool"));
         System.out.println(pigIt("This is my string"));
+        System.out.println(toRoman(8));
+        System.out.println(fromRoman("MMDCXLVIII"));
     }
 
     public static boolean solution(String str, String ending) {
@@ -150,7 +155,41 @@ public class e1 {
 
     public static String pigIt(String str) {
         return Arrays.stream(str.split(" "))
-                .map(n -> n.matches("[^A-Za-z]")? n : n.substring(1).concat(n.substring(0, 1)).concat("ay"))
+                .map(n -> n.matches("[^A-Za-z]") ? n : n.substring(1).concat(n.substring(0, 1)).concat("ay"))
                 .reduce((a, b) -> a + " " + b).get();
+    }
+
+    static Map<String, Integer> nRM = new LinkedHashMap<>();
+    static {
+        nRM.put("M", 1000); nRM.put("CM", 900); nRM.put("D", 500); nRM.put("CD", 400);
+        nRM.put("C", 100); nRM.put("XC", 90); nRM.put("L", 50); nRM.put("XL", 40);
+        nRM.put("X", 10); nRM.put("IX", 9); nRM.put("V", 5); nRM.put("IV", 4); 
+        nRM.put("I", 1);
+    }
+
+    public static String toRoman(int n) {
+        StringBuffer sb = new StringBuffer();
+        for (Entry<String, Integer> entry : nRM.entrySet()) {
+            int base = n / entry.getValue();
+            n = n - base * entry.getValue();
+            if (base > 0) for (int x = 0; x < base; x++) sb.append(entry.getKey());
+            if (n == 0) break;
+        }
+        return sb.toString();
+    }
+
+    public static int fromRoman(String romanNumeral) {
+        int sum = 0;
+        for (Entry<String, Integer> entry : nRM.entrySet()) {
+            String base = entry.getKey();
+            int count = 0;
+            while(romanNumeral.startsWith(base)){
+                romanNumeral = romanNumeral.substring(base.length());
+                count += 1;
+            }
+            sum += count * entry.getValue();
+            if(romanNumeral.isEmpty()) break;
+        }
+        return sum;
     }
 }
