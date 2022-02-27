@@ -32,6 +32,9 @@ public class e2 {
         System.out.println(validParentheses(")(()))"));
         System.out.println(validParentheses("("));
         System.out.println(validParentheses("(())((()())())"));
+        int[] nums = new int[] {2,2,2,2,2};
+        // System.out.println(threeSum(nums));
+        System.out.println(fourSum(nums, 8));
     }
 
     public static int[] parse(String data) {
@@ -160,5 +163,109 @@ public class e2 {
             if(sum < 0) return false;
         }
         return sum == 0 ? true : false;
+    }
+
+    public static int maxArea(int[] height) {
+        int area = 0;
+        int left = 0;
+        int right = height.length - 1;
+        while(left < right) {
+            int l = height[left];
+            int r = height[right];
+            int s = right - left;
+
+            int tmp = Math.min(l, r) * s;
+            if(tmp > area) area = tmp;
+
+            if(l < r) left += 1; else  right += 1;
+        }
+        return area;
+    }
+
+    public static List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(nums.length < 4) return result;
+        Arrays.sort(nums);
+        int i = 0;
+       
+        while (i < nums.length - 3){
+            int target1 = nums[i];
+            int j = i + 1;
+            while (j < nums.length - 2){
+                int target2 = nums[j];
+                twoSum(result, nums, j + 1, target, target1, target2);
+                while(j < nums.length - 2 && nums[j] == target2) j += 1;
+            }
+            while(i < nums.length - 3 && nums[i] == target1) i += 1;
+        }
+        return result;
+    }
+
+    public static void twoSum(List<List<Integer>> result, int[] num, int start, int target, int target1, int target2){
+        int left = start;
+        int right = num.length - 1;
+
+        while(left < right) {
+            int l = num[left];
+            int r = num[right];
+            int gap = l + r + target1 + target2;
+            
+            if(gap < target){
+                while(left < right && num[left] == l) left += 1;
+            }else if(gap > target){
+                while(left < right && num[right] == r) right -= 1;
+            }else{
+                result.add(Arrays.asList(target1, target2, l, r));
+                while(left < right && num[left] == l) left += 1;
+                while(left < right && num[right] == r) right -= 1;
+            }
+        }
+    }
+
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(nums.length < 3) return result;
+        // sort(nums);
+        Arrays.sort(nums);
+        int i = 0;
+        while (i < nums.length - 2){
+            int target = nums[i];
+            twoSum(result, nums, i + 1, target);
+            while(i < nums.length - 2 && nums[i] == target) i += 1;
+        }
+        return result;
+    }
+
+    public static void twoSum(List<List<Integer>> result, int[] num, int start, int target){
+        int left = start;
+        int right = num.length - 1;
+
+        while(left < right) {
+            int l = num[left];
+            int r = num[right];
+            int gap = l + r + target;
+            
+            if(gap < 0 ){
+                while(left < right && num[left] == l) left += 1;
+            }else if(gap > 0){
+                while(left < right && num[right] == r) right -= 1;
+            }else{
+                result.add(Arrays.asList(target, l, r));
+                while(left < right && num[left] == l) left += 1;
+                while(left < right && num[right] == r) right -= 1;
+            }
+        }
+    }
+
+    public static void sort(int[] nums){
+        for(int i = 0; i < nums.length - 1; i++){
+            for(int j = i + 1; j < nums.length; j++){
+                if(nums[i] > nums[j]){
+                    nums[i] = nums[i] ^ nums[j];
+                    nums[j] = nums[i] ^ nums[j];
+                    nums[i] = nums[i] ^ nums[j];
+                }
+            }
+        }
     }
 }
