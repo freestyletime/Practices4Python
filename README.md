@@ -10,7 +10,7 @@ Mobile Development, Data Structure & Algorithm.
 * Java        => [Doc](https://docs.oracle.com/en/java)
 * JS/HTML     => [Tutorial](https://www.w3schools.com/) | [Code](https://codesandbox.io/)
 * Racket      => [Tutorial](https://tyrchen.github.io/racket-book/index.html) | [Doc](https://docs.racket-lang.org/reference/index.html)
-* Dood Online IDE => [Code](https://codesandbox.io/)
+* Online IDE => [Code](https://codesandbox.io/)
 * Racket Online IDE => [Code](https://replit.com/) | [Code](https://onecompiler.com/racket)
 * Haskell   => [Tutorial](http://learnyouahaskell.com/chapters) | [Code](https://www.jdoodle.com/execute-haskell-online/)
 
